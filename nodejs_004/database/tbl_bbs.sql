@@ -11,3 +11,11 @@ USE nodedb;
 DESC tbl_bbs;
 DROP TABLE tbl_bbs;
 select * FROM tbl_bbs;
+
+show databases;
+DESC tbl_replays;
+
+DROP TABLE tbl_bbs;
+DROP TABLE tbl_replies;
+SELECT * FROM tbl_replies;
+DESC tbl_replies;
