@@ -1,0 +1,86 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+}
+h1 {
+  width: 80%;
+  margin: 10px auto;
+  text-align: center;
+}
+div.t_num {
+  width: 40%;
+  margin: 8px auto;
+  text-align: center;
+  background-color: lawngreen;
+}
+section {
+  width: 80%;
+  margin: 1px auto;
+  display: flex;
+}
+section form {
+  width: 40%;
+  margin: 10px auto;
+  display: inline-block;
+}
+section table.product {
+  width: 40%;
+  display: inline-block;
+  margin: 10px auto;
+}
+table.total td {
+  text-align: right;
+}
+table.product td {
+  text-align: center;
+  background-color: rgb(144, 194, 251);
+  padding: 1rem;
+  margin: 10px;
+}
+table tr {
+  margin: 1px auto;
+}
+table.total th {
+  background-color: rgb(144, 194, 251);
+}
+table.total th,
+table.total td {
+  padding: 1rem;
+  width: 40%;
+}
+tr td {
+  padding: 10px;
+  border: 1px solid black;
+}
+table.product td:hover {
+  cursor: pointer;
+}
+button#btn_pay {
+  width: 100%;
+  padding: 15px;
+  font-size: 15pt;
+  margin: 20px auto;
+  background-color: rgb(250, 100, 100);
+  font-weight: bold;
+}
+button#btn_pay:hover {
+  cursor: pointer;
+  background-color: red;
+}
+button#btn_order {
+  width: 100%;
+  padding: 15px;
+  font-size: 15pt;
+  margin: 20px auto;
+  background-color: rgb(100, 100, 250);
+  font-weight: bold;
+}
+button#btn_order:hover {
+  cursor: pointer;
+  background-color: blue;
+}

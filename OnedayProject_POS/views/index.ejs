@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>김밥나라POS</title>
+    <link rel="stylesheet" href="/css/index.css" />
+    <style></style>
+  </head>
+  <body>
+    <h1>김밥나라</h1>
+    <section>
+      <table class="table">
+        <tr class="one">
+          <td id="o_table">1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+        </tr>
+
+        <tr class="two">
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
+          <td>8</td>
+        </tr>
+
+        <tr class="three">
+          <td>9</td>
+          <td>10</td>
+          <td>11</td>
+          <td>12</td>
+        </tr>
+      </table>
+    </section>
+  </body>
+  <script>
+    document.querySelector(".table").addEventListener("click", (e) => {
+      const click_tag = e.target;
+
+      if (click_tag.tagName === "TD") {
+        document.location.href = `/pro/product?o_table=<%- PRODUCT.o_table %>`;
+      }
+    });
+  </script>
+</html>

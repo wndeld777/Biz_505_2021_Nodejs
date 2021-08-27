@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+}
+h1 {
+  width: 80%;
+  margin: 10px auto;
+  text-align: center;
+}
+section {
+  width: 80%;
+  margin: 10px auto;
+}
+section table {
+  padding: 20px;
+  margin: 10px auto;
+  width: 90%;
+}
+
+section tr {
+  padding: 15px;
+}
+
+section tr.one {
+  display: flex;
+}
+section tr.two {
+  display: flex;
+}
+section tr.three {
+  display: flex;
+}
+table tr td {
+  margin: 10px auto;
+  padding: 5rem;
+  border: 1px solid black;
+  background-color: rgb(144, 194, 251);
+  box-shadow: 5px 5px 5px #aaa;
+  cursor: pointer;
+}

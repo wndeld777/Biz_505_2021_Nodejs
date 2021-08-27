@@ -20,7 +20,7 @@ const fileUpfetch = (files) => {
     method: "POST",
     body: formData,
   })
-    .then((res) => res.json)
+    .then((res) => res.json())
     .then((result) => {
       $("#b_text").summernote("insertImage", "/images/" + result.fileName);
       console.log(result);
