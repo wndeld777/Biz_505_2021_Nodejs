@@ -5,9 +5,5 @@ const { tbl_product, tbl_orders } = require("../models/index");
 
 router.get("/order", (req, res) => {
   res.render("product");
-});
-
-router.post("/order", (req, res) => {
   tbl_product.create(req.body).then((result) => res.redirect("/"));
 });
-module.exports = router;
