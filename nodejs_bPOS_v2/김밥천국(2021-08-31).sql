@@ -20,7 +20,3 @@ VALUES
 
 Select * from tbl_products;
 SELECT * FROM tbl_table_orders;
-
-
-
-drop  table tbl_table_orders;
