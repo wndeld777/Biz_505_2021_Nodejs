@@ -4,6 +4,7 @@ show tables;
 
 drop table tbl_products;
 drop table tbl_orders;
+drop table tbl_table_orders;
 
 INSERT INTO tbl_products(p_code,p_name,p_price)
 VALUES 
@@ -20,3 +21,8 @@ VALUES
 
 Select * from tbl_products;
 SELECT * FROM tbl_table_orders;
+
+SELECT to_table_id, count(to_table_id) AS count
+FROM tbl_table_orders
+WHERE to_pay IS NULL
+GROUP BY to_table_id;

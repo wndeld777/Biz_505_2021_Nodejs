@@ -30,8 +30,18 @@ module.exports = (sequelize, DataTypes) => {
       o_buyer: {
         type: DataTypes.STRING(30),
       },
+      o_pay: {
+        type: DataTypes.STRING(1),
+      },
+      o_pay_qty: {
+        type: DataTypes.STRING(10),
+      },
     },
     { timestamps: false }
   );
+  orders.associate = (models) => {
+    orders.belongsTo(models.tbl_product, { foreignKey: "o_pcode" });
+  };
+
   return orders;
 };

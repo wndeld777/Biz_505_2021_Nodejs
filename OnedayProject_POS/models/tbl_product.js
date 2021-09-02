@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
       },
       p_name: {
-        type: DataTypes.STRING(30),
+        type: DataTypes.STRING,
         allowNull: false,
       },
       p_price: {
@@ -15,10 +15,14 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       p_rem: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.STRING,
       },
     },
     { timestamps: false }
   );
+  product.associate = (models) => {
+    product.hasMany(models.tbl_table_orders, { foreignKey: "o_pcode" });
+  };
+
   return product;
 };

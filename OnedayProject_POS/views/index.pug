@@ -1,0 +1,28 @@
+block content
+	h1 김밥나라
+	link(rel="stylesheet" href="/css/index.css")
+	section
+		table.table
+			tr.one
+				td 1
+				td 2
+				td 3
+				td 4
+			tr.two
+				td 5
+				td 6
+				td 7
+				td 8
+			tr.three
+				td 9
+				td 10
+				td 11
+				td 12
+	script.
+		document.querySelector(".table").addEventListener("click", (e) => {
+		const click_tag = e.target;
+
+			if (click_tag.tagName === "TD") {
+				document.location.href = `/pos/order?o_table=<%- PRODUCT.o_table %>`;
+			}
+		});
