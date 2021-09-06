@@ -1,5 +1,5 @@
-module.exports = (sequelize, DataTypes) => {
-  const orders = sequelize.define(
+module.exports = (seq, DataTypes) => {
+  const orders = seq.define(
     "tbl_orders",
     {
       o_seq: {

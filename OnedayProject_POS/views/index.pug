@@ -1,23 +1,7 @@
+extends layout
+
 block content
-	h1 김밥나라
 	link(rel="stylesheet" href="/css/index.css")
-	section
-		table.table
-			tr.one
-				td 1
-				td 2
-				td 3
-				td 4
-			tr.two
-				td 5
-				td 6
-				td 7
-				td 8
-			tr.three
-				td 9
-				td 10
-				td 11
-				td 12
 	each table,index in TABLES
 		if(table.order_count>0)
 			div.table.order_yes(data-table_id=table.id) !{table.table_name}
@@ -25,10 +9,14 @@ block content
 		else 
 			div.table(data-table_id=table_id) !{table.table_name}
 	script.
-		document.querySelector(".table").addEventListener("click", (e) => {
-		const click_tag = e.target;
+		const main_section = document.querySelector("section.main")
+		if(main_section){
+			main_section.addEventListener("click",(e)=>{
+				const target = e.target;
 
-			if (click_tag.tagName === "TD") {
-				document.location.href = `/pos/order?o_table=<%- PRODUCT.o_table %>`;
-			}
-		});
+				if(target.tagName === "DIV" && target.className.includes("table")){
+					const table_id = target.dataset.table;
+					document.location.href = `/pos/order/${table}`;
+				}
+			})
+		}
