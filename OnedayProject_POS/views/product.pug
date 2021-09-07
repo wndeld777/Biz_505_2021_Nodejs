@@ -2,29 +2,39 @@ block content
     link(rel="stylesheet" href="/css/product.css")
     h1 주문
     section
-      	div.t_num 1번테이블
+      	div.t_num !{table_id} 번 테이블
       	table.total
-        	tr
-        		th 품목
-          		th 단가
-          		th 수량
-          		th 금액
-        
-
-        	tr
-          		td.p_product
-          		td.p_price 1000
-          		td.p_count 1
-          		td.p_total 1000
-      	div 
-	  		button.btn_order 주문
-      	div
-		  	button.btn_pay 결제하기
-
+        	thead
+				tr
+					th ID
+        			th 품목
+          			th 단가
+          			th 수량
+          			th 금액
+					th 삭제
+			tbody
+        		.btn_box 
+					button.btn_layout 메인화면
+					button.btn_cash 현금결제
+					button.btn_card 카드결제
       	table.product
+		  	each menu_list,index in MENU 
+			  	div.menu(data-menu_id= menu_list.p_code)
+				  h3= menu_list.p_name 
+				  p= menu_list.p_price
+
+		.modal 
+			.close 
+				span &times;
+			.message 
+				h1 결제금액 :
+					span.pay_total 
+				h2 결제종류 : 
+					span.pay_qty
+				button.btn_pay_complete 확인
 
   	script.
-    	document.querySelector("#btn_order").addEventListener("click", () => {
+    	document.querySelector(".btn_layout").addEventListener("click", () => {
       	document.location.href = "/";
     });
   

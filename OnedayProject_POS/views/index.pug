@@ -5,7 +5,7 @@ block content
 	each table,index in TABLES
 		if(table.order_count>0)
 			div.table.order_yes(data-table_id=table.id) !{table.table_name}
-				span( !{table.order_count} )
+				span ( !{table.order_count} )
 		else 
 			div.table(data-table_id=table_id) !{table.table_name}
 	script.
