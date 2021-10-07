@@ -27,12 +27,13 @@ import mongoose from "mongoose";
 
 const dbConn = mongoose.connection;
 dbConn.once("open", () => {
-  console.log("MongoDB OK!!");
+  console.log("MongoDB OK");
 });
 dbConn.on("error", () => {
-  console.err;
+  console.error();
 });
-mongoose.connect("mongodb://localhost:27017");
+
+mongoose.connect("mongodb://localhost:27017/users");
 
 const app = express();
 
@@ -45,7 +46,7 @@ const corsOption = {
   credentials: true,
 };
 app.use(cors(corsOption));
-
+JR;
 // Disable the fingerprinting of this web technology. 경고
 app.disable("x-powered-by");
 
