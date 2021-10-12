@@ -6,7 +6,7 @@
  *
  * require() 방식의 코드를 import 방식으로 변경
  * require() 방식의 코드를 CommonJS 코드라고 하며
- * import 방식으로 사용하는 코드를 ES+ 모듈방식 코드라고 한다.
+ * import 방식으로 사용하는 코드를 ES6+ 모듈방식 코드라고 한다.
  */
 import createError from "http-errors";
 import express from "express";
@@ -35,13 +35,13 @@ mongoose.connect("mongodb://localhost:27017/users");
 
 const app = express();
 
-const whilteURL = ["http://localhost:3000"];
+const whiteURL = ["http://localhost:3000"];
 const corsOption = {
   origin: (origin, callback) => {
-    const isWhiteURL = whilteURL.indexOf(origin) !== -1;
+    const isWhiteURL = whiteURL.indexOf(origin) !== -1;
     callback(null, isWhiteURL);
   },
-  credentials: true,
+  credentials: true, // 인증정보를 포함하겠다
 };
 
 app.use(cors(corsOption));
@@ -59,7 +59,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join("./public")));
 
-// 하루동안 유지 밀리초 * 60초 * 60분 * 24시간
+// 하루동안 유지하도록: 밀리초 * 60초 * 60분 * 24시간
 const oneDay = 1000 * 60 * 60 * 24;
 // 세션활성화
 app.use(
@@ -78,7 +78,7 @@ app.use(passport.initialize()); // passport start
 app.use(passport.session());
 passportConfig();
 
-// response를 할때 session 담긴값을 클라언트로 전송하기 위한
+// response를 할때 session에 담긴값을 클라이언트로 전송하기 위한
 // 옵션설정하기
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");

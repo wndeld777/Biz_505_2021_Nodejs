@@ -1,6 +1,7 @@
 import passport from "passport";
 import passportLocal from "passport-local";
 import User from "../models/User.js";
+import { members } from "../models/Member.js";
 
 // local login 정책을 수행하는 모듈
 const LocalStratege = passportLocal.Strategy;
@@ -14,7 +15,7 @@ const exportPassport = () => {
 
   // 로그인이 정상적으로 수행된 후 client에서 세션이 유효한지
   // 문의가 들어왔을때 실행되는 함수
-  //	   deserializeUser
+  // 		deserializeUser
   passport.deserializeUser((user, done) => {
     console.log("DESC", user);
     done(null, user);
@@ -30,32 +31,27 @@ const exportPassport = () => {
         session: true, // 세션 저장하기
       },
       (userid, password, done) => {
-        /**
-         * login이 성공했을 경우
-         * done() 함수의 2번째 매개변수에
-         * 로그인 정보를 담아주면
-         * router 에서 req.user 객체가 생성되고
-         * 로그인한 정보를 추출할 수 있다
-         */
-
-        User.findOne({ userid: userid, password: password }, (err, data) => {
-          if (err) {
-            return done(err);
+        // Member.js 에 선언된 사용자 리스트를 사용하여 인증하기
+        // filter 또는 map 또는 forEach 이중에 택일, filter는 [0] 필요
+        // const findMember = members.filter((member) => {
+        //   return member.userid === userid && member.password === password;
+        // });
+        // if (findMember && findMember.length > 0) {
+        //   return done(null, findMember[0]);
+        // } else {
+        //   return done(null, false, { message: "login Fail" });
+        // }
+        members.map((member) => {
+          if (member.userid === userid && member.password === password) {
+            return done(null, member);
           }
-          if (!data) {
-            return done(null, false, {
-              message: "존재하지 않는 아이디 입니다",
-            });
-          }
-
-          if (data.password != password) {
-            return done(null, false, { message: "비밀번호 오류" });
-          }
-
-          return done(null, data);
         });
-
-        // return done(null, { userid: "root", password: "12345" });
+        members.forEach((member) => {
+          if (member.userid === userid && member.password === password) {
+            return done(null, member);
+          }
+        });
+        return done(null, false, { message: "login Fail" });
       }
     )
   );
